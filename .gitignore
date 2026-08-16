@@ -1,0 +1,33 @@
+# OS files
+.DS_Store
+.DS_Store?
+*/.DS_Store
+Thumbs.db
+
+# Build outputs & caches
+build/
+DerivedData/
+*.log
+*.tmp
+*.class
+appinventor/appengine/war/WEB-INF/classes/
+appinventor/appengine/build/
+appinventor/buildserver/build/
+appinventor/build/
+appinventor/components/build/
+appinventor/common/build/
+appinventor/blocklyeditor/build/
+
+# Binaries & large installers
+*.bin
+*.dmg
+*.exe
+appinventor/appengine/war/appstudio/*.bin
+appinventor/appengine/war/appstudio/*.dmg
+appinventor/appengine/war/appstudio/*.exe
+
+# Desktop dist & node_modules
+desktop/dist/
+desktop/node_modules/
+desktop/engine/
+.firebase/

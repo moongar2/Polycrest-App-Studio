@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PolyCrest App Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-app-region: drag;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background: #121316;
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid #2a2c36;
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(232, 61, 99, 0.15);
+      position: relative;
+    }
+
+    .background-glow {
+      position: absolute;
+      top: -20%;
+      left: 20%;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(232, 61, 99, 0.25) 0%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 2;
+      padding: 30px;
+    }
+
+    .logo-container {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .logo-crest {
+      width: 72px;
+      height: 72px;
+      animation: pulse-glow 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        filter: drop-shadow(0 0 12px rgba(232, 61, 99, 0.4));
+        transform: scale(1);
+      }
+      50% {
+        filter: drop-shadow(0 0 24px rgba(232, 61, 99, 0.8));
+        transform: scale(1.03);
+      }
+    }
+
+    .title {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #f3f4f6;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .title span {
+      color: #E83D63;
+    }
+
+    .edition-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #38BDF8;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 30px;
+    }
+
+    .badge-dot {
+      width: 5px;
+      height: 5px;
+      background: #38BDF8;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #38BDF8;
+    }
+
+    .progress-track {
+      width: 260px;
+      height: 4px;
+      background: #1a1b20;
+      border-radius: 9999px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 14px;
+      border: 1px solid #2a2c36;
+    }
+
+    .progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(90deg, #FF5376 0%, #E83D63 50%, #38BDF8 100%);
+      border-radius: 9999px;
+      box-shadow: 0 0 12px rgba(232, 61, 99, 0.8);
+      animation: indeterminate 1.8s infinite ease-in-out;
+    }
+
+    @keyframes indeterminate {
+      0% {
+        left: -40%;
+        width: 30%;
+      }
+      50% {
+        left: 35%;
+        width: 50%;
+      }
+      100% {
+        left: 100%;
+        width: 30%;
+      }
+    }
+
+    .status-text {
+      font-size: 12px;
+      font-weight: 500;
+      color: #9ca3af;
+      letter-spacing: 0.5px;
+      min-height: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-glow"></div>
+  <div class="container">
+    <div class="logo-container">
+      <img src="../assets/polycrest-logo.png" class="logo-crest" alt="PolyCrest" />
+    </div>
+
+    <div class="title">POLY<span>CREST</span></div>
+    <div class="edition-badge">
+      <span class="badge-dot"></span> Standalone Studio Edition
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-bar"></div>
+    </div>
+
+    <div class="status-text" id="status">Initializing Visual Studio Engine...</div>
+  </div>
+
+  <script>
+    const statusEl = document.getElementById('status');
+    const messages = [
+      "Starting Visual Engineering Engine...",
+      "Initializing Android Build Server...",
+      "Mounting Offline Project Datastore...",
+      "Loading PolyCrest Workspace...",
+      "Ready to launch Studio!"
+    ];
+
+    let msgIndex = 0;
+    setInterval(() => {
+      msgIndex = (msgIndex + 1) % messages.length;
+      statusEl.textContent = messages[msgIndex];
+    }, 1800);
+  </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PolyCrest App Studio - Local Engine Setup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0B0F19;
+      --bg-card: rgba(17, 24, 39, 0.85);
+      --primary: #0D99FF;
+      --accent-cyan: #00D4FF;
+      --accent-glow: rgba(0, 212, 255, 0.3);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-sub: #64748B;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-active: rgba(0, 212, 255, 0.4);
+      --radius-lg: 20px;
+      --radius-md: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(13, 153, 255, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(0, 212, 255, 0.12) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .card {
+      max-width: 580px;
+      width: 100%;
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-active);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      text-align: center;
+    }
+
+    .icon-wrap {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(13, 153, 255, 0.25), rgba(0, 212, 255, 0.15));
+      border: 1px solid var(--border-active);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-cyan);
+      box-shadow: 0 0 25px var(--accent-glow);
+    }
+
+    .icon-wrap svg { width: 34px; height: 34px; fill: currentColor; }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF, var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .instruction-box {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 0.5px;
+    }
+
+    .code-block {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: #000;
+      color: #38BDF8;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      user-select: all;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+      color: #000;
+      box-shadow: 0 0 16px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid var(--border-active);
+      color: var(--accent-cyan);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(51, 65, 85, 0.9);
+      color: #FFF;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: #38BDF8;
+      background: rgba(0, 212, 255, 0.1);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin: 0 auto;
+      border: 1px solid rgba(0, 212, 255, 0.3);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00D4FF;
+      box-shadow: 0 0 8px #00D4FF;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+    </div>
+
+    <div>
+      <h1>PolyCrest Studio Engine Initializing</h1>
+      <p>PolyCrest App Studio requires <b>Java 17+</b> to run the local visual builder, RPC servlets, and APK build engine.</p>
+    </div>
+
+    <div class="status-pill">
+      <span class="dot"></span>
+      <span>PCstarter Device Hub is Active on Port 8004</span>
+    </div>
+
+    <div class="instruction-box">
+      <div class="step-title">REQUIREMENTS FOR WINDOWS:</div>
+      <p style="font-size: 12.5px; color: var(--text-muted);">If Java is not yet installed on this PC, install <b>Java 17 (Adoptium OpenJDK)</b> once, and PolyCrest App Studio will start automatically.</p>
+    </div>
+
+    <div class="actions">
+      <a href="https://adoptium.net/temurin/releases/?version=17" target="_blank" class="btn btn-primary">
+        <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Download Java 17 (Adoptium)
+      </a>
+      <button class="btn btn-secondary" onclick="retryConnection()">
+        <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+        Retry / Refresh
+      </button>
+      <button class="btn btn-secondary" onclick="openPCstarter()">
+        ⚡ PCstarter Hub
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let isRetrying = false;
+
+    async function retryConnection() {
+      if (isRetrying) return;
+      isRetrying = true;
+
+      const btn = document.querySelector('.btn-secondary');
+      if (btn) btn.textContent = 'Starting Studio Engine...';
+
+      if (window.polycrestDesktop && window.polycrestDesktop.retryStartup) {
+        try {
+          const started = await window.polycrestDesktop.retryStartup();
+          if (started) {
+            window.location.href = 'http://127.0.0.1:8888/?locale=en';
+            return;
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      try {
+        await fetch('http://127.0.0.1:8888/', { mode: 'no-cors' });
+        window.location.href = 'http://127.0.0.1:8888/?locale=en';
+      } catch (e) {
+        if (btn) btn.textContent = 'Retry / Refresh';
+        isRetrying = false;
+        alert('Studio engine is not yet active on port 8888. If you just installed Java 17, click Retry again in a few seconds.');
+      }
+    }
+
+    function openPCstarter() {
+      window.location.href = 'http://127.0.0.1:8004/';
+    }
+
+    // Auto-poll every 3 seconds
+    setInterval(async () => {
+      if (window.polycrestDesktop && window.polycrestDesktop.retryStartup) {
+        try {
+          const started = await window.polycrestDesktop.retryStartup();
+          if (started) {
+            window.location.href = 'http://127.0.0.1:8888/?locale=en';
+            return;
+          }
+        } catch (e) {}
+      }
+
+      try {
+        await fetch('http://127.0.0.1:8888/', { mode: 'no-cors' });
+        window.location.href = 'http://127.0.0.1:8888/?locale=en';
+      } catch (e) {}
+    }, 3000);
+  </script>
+</body>
+</html>

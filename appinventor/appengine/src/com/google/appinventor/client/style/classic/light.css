@@ -1,0 +1,71 @@
+@def logo-image                         url('static/images/codi-logo-dark.svg');
+@def background-image                   url('static/images/squairy_dark.jpg');
+@def closed-backpack                    url('../blocklyeditor/media/backpack-closed-copy.png');
+
+@def clr-primary-50                     #1a1b20;
+@def clr-primary-75                     #FF5376;
+@def clr-primary-200                    #B31D42;
+@def clr-primary                        #E83D63;
+@def clr-primary-600                    #B31D42;
+@def clr-primary-500                    #1a1b20;
+@def clr-primary-700                    #E83D63;
+
+/* destructive-action-hover  */
+@def error                              #EF4444;
+/* item-color-red  */
+@def v-red                              #E83D63;
+
+/* top-panel-background-image */
+@def gray-50                            #121316;
+@def gray-75                            #16171d;
+/* top-panel-background-color, text-button-background */
+@def gray-100                           #1a1b20;
+@def gray-200                           #1a1b20;
+/* border-color */
+@def gray-300                           #2a2c36;
+@def gray-400                           #6b7280;
+@def gray-450                           #9ca3af;
+/* label-color  */
+@def gray-500                           #9ca3af;
+@def gray-550                           #d1d5db;
+/* top-panel-color */
+@def gray-600                           #d1d5db;
+@def gray-650                           #f3f4f6;
+@def gray-700                           #f3f4f6;
+/* panel-shadow  */
+@def gray-800                           #f3f4f6;
+@def gray-900                           #ffffff;
+
+/* background-color  */
+@def v-white                            #121316;
+/* tab-bar-color */
+@def v-black                            #f3f4f6;
+
+/* top-panel-end-color  */
+@def srfc-high-emphasis                 rgba(26, 27, 32, 0.95);
+/* container-shadow */
+@def elevation-6                        rgba(0, 0, 0, 0.5);
+/* shadow-color */
+@def elevation-2                        rgba(232, 61, 99, 0.2);
+/* button-shadow-color */
+@def elevation-16                       rgba(232, 61, 99, 0.35);
+
+/* Colors */
+@def blocks-designer-color              #E83D63;
+@def project-background-color           #1a1b20;
+@def explorer-border                    #2a2c36;
+@def simple-panel-border                #E83D63;
+@def simple-panel-shadow                rgba(232, 61, 99, 0.35);
+@def project-color                      #38BDF8;
+@def project-background                 #1a1b20;
+
+/* Mockforms */
+@def phoneLandscape                      url('static/images/dark_mode_mockups/dark-mode-phoneLandscape.png');
+@def phonePortrait                       url('static/images/dark_mode_mockups/dark-mode-phonePortrait.png');
+@def phoneLandscapeTablet                url('static/images/dark_mode_mockups/dark-mode-phoneLandscapeTablet.png');
+@def phonePortraitTablet                 url('static/images/dark_mode_mockups/dark-mode-phonePortraitTablet.png');
+@def phoneLandscapeMonitor               url('static/images/dark_mode_mockups/dark-mode-phoneLandscapeMonitor.png');
+@def phonePortraitMonitor                url('static/images/dark_mode_mockups/dark-mode-phonePortraitMonitor.png');
+
+@def navigationbarPortrait               url('static/images/navigationbarPortrait.png');
+@def navigationbarLandscape              url('static/images/navigationbarLandscape.png');

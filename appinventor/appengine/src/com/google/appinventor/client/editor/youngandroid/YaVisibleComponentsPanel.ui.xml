@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2011-2023 MIT, All rights reserved -->
+<!-- Released under the Apache License, Version 2.0 -->
+<!-- http://www.apache.org/licenses/LICENSE-2.0 -->
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:ed="urn:import:com.google.appinventor.client.editor.youngandroid"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             ui:generatedFormat="com.google.gwt.i18n.server.PropertyCatalogFactory"
+             ui:generatedKeys="com.google.gwt.i18n.server.keygen.MethodNameKeyGenerator"
+             ui:generateLocales="default">
+    <ui:with field="messages" type="com.google.appinventor.client.OdeMessages" />
+    <g:VerticalPanel styleName="ode-SimpleFormDesigner">
+        <g:VerticalPanel ui:field="phoneScreen" stylePrimaryName="ode-SimpleFormDesigner">
+          <g:CheckBox ui:field="HiddenComponentsCheckbox" text="{messages.showHiddenComponentsCheckbox}" title="{messages.showHiddenComponentsCheckbox}" />
+            <g:ListBox ui:field="listboxPhoneTablet" title="{messages.previewDeviceSize}">
+                <g:item value="393, 852">Phone (393 x 852)</g:item>
+                <g:item value="430, 932">Phone Max (430 x 932)</g:item>
+                <g:item value="360, 800">Phone Compact (360 x 800)</g:item>
+                <g:item value="600, 960">Foldable (600 x 960)</g:item>
+                <g:item value="820, 1180">Tablet (820 x 1180)</g:item>
+                <g:item value="1024, 768">Monitor (1024 x 768)</g:item>
+                <g:item value="320, 650">Legacy Phone (320 x 650)</g:item>
+            </g:ListBox>
+          <g:ListBox ui:field="listboxPhonePreview" title="{messages.previewOperatingSystem}">
+            <g:item value="0"><ui:text from="{messages.previewAndroid5Devices}"/></g:item>
+            <g:item value="1"><ui:text from="{messages.previewAndroid4Devices}"/></g:item>
+            <g:item value="2"><ui:text from="{messages.previewIOS}"/></g:item>
+          </g:ListBox>
+        </g:VerticalPanel>
+    </g:VerticalPanel>
+</ui:UiBinder>
+

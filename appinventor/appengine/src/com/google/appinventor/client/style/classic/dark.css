@@ -1,0 +1,58 @@
+@def logo-image                         url('static/images/codi-logo-dark.svg');
+@def background-image                   url('static/images/squairy_dark.jpg');
+
+@def clr-primary-50                     #18181b;
+@def clr-primary-75                     #FF5376;
+
+@def clr-primary-200                    #B31D42;
+@def clr-primary                        #E83D63;
+@def clr-primary-500                    #E83D63;
+@def clr-primary-600                    #B31D42;
+
+@def clr-primary-700                    #E83D63;
+
+@def error                              #EF4444;
+@def v-red                              #E83D63;
+
+@def gray-50                            #09090b;
+@def gray-75                            #18181b;
+@def gray-100                           #27272a;
+@def gray-200                           #27272a;
+@def gray-300                           #18181b;
+@def gray-400                           #71717a;
+@def gray-450                           #a1a1aa;
+@def gray-500                           #a1a1aa;
+@def gray-550                           #d4d4d8;
+@def gray-600                           #f4f4f5;
+@def gray-650                           #f4f4f5;
+@def gray-700                           #ffffff;
+@def gray-800                           #ffffff;
+@def gray-900                           #ffffff;
+
+@def v-white                            #09090b;
+@def v-black                            #ffffff;
+@def srfc-high-emphasis                 rgba(24, 24, 27, 0.95);
+@def elevation-6                        rgba(0,0,0,0.6);
+@def elevation-2                        rgba(232, 61, 99, 0.2);
+@def elevation-16                       rgba(232, 61, 99, 0.35);
+
+/* Colors */
+/* cyber blue & hot crimson */
+@def blocks-designer-color              #E83D63;
+@def project-background-color           #18181b;
+@def explorer-border                    #27272a;
+@def simple-panel-border                #E83D63;
+@def simple-panel-shadow                rgba(232, 61, 99, 0.4);
+@def project-color                      #38BDF8;
+@def project-background                 #18181b;
+
+/* Mockforms */
+@def phoneLandscape                      url('static/images/dark_mode_mockups/dark-mode-phoneLandscape.png');
+@def phonePortrait                       url('static/images/dark_mode_mockups/dark-mode-phonePortrait.png');
+@def phoneLandscapeTablet                url('static/images/dark_mode_mockups/dark-mode-phoneLandscapeTablet.png');
+@def phonePortraitTablet                 url('static/images/dark_mode_mockups/dark-mode-phonePortraitTablet.png');
+@def phoneLandscapeMonitor               url('static/images/dark_mode_mockups/dark-mode-phoneLandscapeMonitor.png');
+@def phonePortraitMonitor                url('static/images/dark_mode_mockups/dark-mode-phonePortraitMonitor.png');
+
+@def navigationbarPortrait               url('static/images/navigationbarPortrait.png');
+@def navigationbarLandscape              url('static/images/navigationbarLandscape.png');

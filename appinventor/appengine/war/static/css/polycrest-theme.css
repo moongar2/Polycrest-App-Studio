@@ -1,0 +1,1433 @@
+/* ==========================================================================
+   PolyCrest App Studio - Unified Cyber Studio Design System
+   Matches polycrest.ac Palette, Fonts, Components, Designer & Blocks Editor
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --pc-bg: #0a0f1a;
+  --pc-bg-subtle: #0d121e;
+  --pc-surface: #121723;
+  --pc-surface-elevated: #181e2d;
+  --pc-surface-hover: #20273a;
+  --pc-border: transparent;
+  --pc-border-subtle: transparent;
+  --pc-border-glow: rgba(228, 63, 90, 0.35);
+  
+  --pc-primary: #e43f5a;
+  --pc-primary-hover: #ff5270;
+  --pc-primary-glow: 0 0 16px rgba(228, 63, 90, 0.35);
+  --pc-primary-glow-lg: 0 0 28px rgba(228, 63, 90, 0.2);
+  
+  --pc-cyber-blue: #38BDF8;
+  --pc-cyber-blue-glow: 0 0 14px rgba(56, 189, 248, 0.35);
+  --pc-accent-purple: #8B5CF6;
+  --pc-success: #10B981;
+  --pc-warning: #F59E0B;
+  --pc-error: #EF4444;
+
+  --pc-text-heading: #f3f4f6;
+  --pc-text-body: #d1d5db;
+  --pc-text-muted: #9ca3af;
+  --pc-text-dim: #6b7280;
+
+  --pc-font-heading: 'Chakra Petch', -apple-system, sans-serif;
+  --pc-font-body: 'Chakra Petch', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --pc-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ==========================================================================
+   GLOBAL RESETS & BACKGROUND
+   ========================================================================== */
+
+body, html {
+  background-color: var(--pc-bg) !important;
+  color: var(--pc-text-body) !important;
+  font-family: var(--pc-font-body) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.gwt-bodyRob,
+.ode-Root,
+.ode-DeckPanel,
+.ode-Panel {
+  background-color: var(--pc-bg) !important;
+  background-image: none !important;
+  border: none !important;
+}
+
+/* ==========================================================================
+   GLOBAL ZERO-BORDER OVERRIDE (ELIMINATE ALL SEPARATOR & CONTAINER BORDERS)
+   ========================================================================== */
+
+.ode-ProjectEditor,
+.ode-WorkColumns,
+.ode-WorkColumns > *,
+.ode-WorkColumns > div,
+.ode-Box,
+.ode-Box-content,
+.ode-Box-body,
+.ode-Box-body-padding,
+.ode-Box-header,
+.ViewerBox,
+.PaletteBox,
+.PropertiesBox,
+.SourceStructureBox,
+.BlockSelectorBox,
+.AssetListBox,
+.ode-Designer-LeftColumn,
+.ode-Designer-RightColumns,
+.ode-PropertiesPanel,
+.gwt-StackPanel,
+.gwt-StackPanel td,
+.gwt-StackPanel tr,
+.gwt-StackPanel table,
+.gwt-StackPanelItem,
+.gwt-StackPanelItem div,
+.gwt-StackPanelContent,
+.gwt-DecoratedStackPanel,
+.gwt-DecoratedStackPanel td,
+.gwt-DecoratedStackPanel tr,
+.gwt-DecoratedStackPanel table,
+.ode-Palette,
+.ode-Palette td,
+.ode-Palette tr,
+.ode-Palette table,
+.ode-PaletteCategory,
+.ode-PaletteCategoryHeader,
+.ode-PaletteCategoryHeader td,
+.ode-PaletteCategoryHeader tr,
+.gwt-DisclosurePanel,
+.gwt-DisclosurePanel td,
+.gwt-DisclosurePanel tr,
+.gwt-DisclosurePanel table,
+.ode-CollapsiblePanel,
+.ode-ExplorerContent,
+.ode-TopPanel,
+.ode-DesignToolbar,
+.ya-Toolbar,
+.ya-Toolbar-minimal {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--pc-font-heading) !important;
+  color: var(--pc-text-heading) !important;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--pc-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pc-surface-elevated);
+  border-radius: 4px;
+  border: none;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pc-primary);
+  box-shadow: var(--pc-primary-glow);
+}
+
+/* ==========================================================================
+   1. TOP NAVIGATION HEADER & TOOLBAR
+   ========================================================================== */
+
+.ode-TopPanel {
+  background: rgba(13, 18, 30, 0.96) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 16px 0 84px !important;
+  z-index: 100 !important;
+  -webkit-app-region: drag !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.ode-Logo,
+.ode-TopToolbar,
+.gwt-MenuBar-horizontal,
+.gwt-MenuItem,
+.ode-TopPanelButton,
+.ode-TopPanelAccount,
+.ode-TopPanelLinks,
+.ode-DropDown-popup,
+.ode-DesignToolbar,
+.ya-Toolbar,
+button,
+a,
+input,
+select {
+  -webkit-app-region: no-drag !important;
+}
+
+.ode-Logo {
+  content: url('/static/images/codi-logo-dark.svg') !important;
+  height: 34px !important;
+  width: auto !important;
+  cursor: pointer;
+  filter: drop-shadow(0 0 6px rgba(228, 63, 90, 0.35));
+  transition: filter 0.25s ease;
+  margin-right: 18px;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  -webkit-app-region: no-drag !important;
+}
+.ode-Logo:hover {
+  filter: drop-shadow(0 0 12px rgba(228, 63, 90, 0.6));
+}
+
+.ode-TopToolbar, .gwt-MenuBar-horizontal {
+  background: transparent !important;
+  border: none !important;
+  font-family: var(--pc-font-heading) !important;
+}
+
+.ode-TopPanelButton,
+.gwt-MenuBar-horizontal .gwt-MenuItem,
+.ode-TopToolbar .gwt-MenuItem {
+  font-family: var(--pc-font-heading) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  color: var(--pc-text-muted) !important;
+  background: transparent !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  border: none !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  margin: 0 2px !important;
+}
+
+.ode-TopPanelButton:hover,
+.gwt-MenuBar-horizontal .gwt-MenuItem:hover,
+.ode-TopToolbar .gwt-MenuItem:hover,
+.gwt-MenuBar-horizontal .gwt-MenuItem-selected {
+  color: var(--pc-text-heading) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: none !important;
+}
+
+/* User Account & Profile Pill */
+.ode-TopPanelAccount {
+  background: var(--pc-surface-elevated) !important;
+  border: none !important;
+  border-radius: 20px !important;
+  padding: 4px 12px !important;
+  color: var(--pc-text-heading) !important;
+  font-family: var(--pc-font-heading) !important;
+  font-size: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Modern Dropdown Menus */
+.gwt-MenuBar-vertical,
+.ode-DropDown-popup,
+.gwt-PopupPanel {
+  background: rgba(18, 23, 35, 0.98) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important;
+  padding: 6px !important;
+  z-index: 1000 !important;
+}
+
+.gwt-MenuBar-vertical .gwt-MenuItem {
+  color: var(--pc-text-body) !important;
+  font-family: var(--pc-font-heading) !important;
+  font-size: 13px !important;
+  padding: 8px 14px !important;
+  border-radius: 6px !important;
+  border: none !important;
+  transition: all 0.15s ease !important;
+}
+
+.gwt-MenuBar-vertical .gwt-MenuItem-selected {
+  background: rgba(228, 63, 90, 0.15) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+/* ==========================================================================
+   2. SCREENS SUBHEADER TOOLBAR & MODE SWITCHER
+   ========================================================================== */
+
+.ode-DesignToolbar,
+.ya-Toolbar,
+.ya-Toolbar-minimal {
+  background: var(--pc-bg-subtle) !important;
+  border: none !important;
+  border-bottom: none !important;
+  min-height: 48px !important;
+  height: 48px !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  color: var(--pc-text-heading) !important;
+  box-sizing: border-box !important;
+  user-select: none !important;
+  position: relative !important;
+}
+
+/* Left Group (Back Button + Project Name) */
+.ya-Toolbar .left {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  height: 100% !important;
+}
+
+.ya-Toolbar .left .gwt-Button,
+.ya-Toolbar .left .ode-TextButton {
+  min-width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  padding: 0 8px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 6px !important;
+}
+
+.ya-ProjectName {
+  font-family: var(--pc-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  letter-spacing: 0.5px !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+/* Center Group (Screens Selector & Actions - Perfectly Centered) */
+.ya-Toolbar .center {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  height: 32px !important;
+}
+
+.ya-Toolbar .center .gwt-Label,
+.ya-Toolbar .center span {
+  font-family: var(--pc-font-heading) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #94A3B8 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  margin-right: 4px !important;
+}
+
+.ya-Toolbar .center .gwt-Button,
+.ya-Toolbar .center .ode-TextButton,
+.ya-Toolbar .center .ode-DropDownButton,
+.ya-Toolbar .center .ode-DropDownButton .gwt-Button {
+  background: var(--pc-surface-elevated) !important;
+  border: none !important;
+  color: #E2E8F0 !important;
+  font-family: var(--pc-font-heading) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.6px !important;
+  text-transform: uppercase !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  padding: 0 10px !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.ya-Toolbar .center .gwt-Button:hover,
+.ya-Toolbar .center .ode-TextButton:hover,
+.ya-Toolbar .center .ode-DropDownButton:hover {
+  background: var(--pc-surface-hover) !important;
+  color: #FFFFFF !important;
+}
+
+/* Right Group (Mode Switcher Pill Group) */
+.ya-Toolbar .right {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+  height: auto !important;
+  background: var(--pc-surface) !important;
+  padding: 3px !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+.ya-Toolbar .right .ode-ProjectListButton,
+.ya-Toolbar .right .ode-BlocksDesignerButton,
+.ya-Toolbar .right .ode-DesignToolbarButton,
+.ya-Toolbar .right .gwt-Button,
+.ya-Toolbar .right .ode-TextButton {
+  background: transparent !important;
+  border: none !important;
+  color: #94A3B8 !important;
+  font-family: var(--pc-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  height: 28px !important;
+  line-height: 28px !important;
+  padding: 0 12px !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  transition: all 0.15s ease !important;
+}
+
+.ya-Toolbar .right .ode-ProjectListButton:hover,
+.ya-Toolbar .right .ode-BlocksDesignerButton:hover,
+.ya-Toolbar .right .gwt-Button:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+}
+
+/* Active Mode Switcher (DESIGNER or BLOCKS) */
+.ya-Toolbar .right .ode-ProjectListButton-selected,
+.ya-Toolbar .right .ode-DesignToolbarButton-selected,
+.ya-Toolbar .right .ode-BlocksDesignerButton-selected,
+.ya-Toolbar .right .ode-ProjectListButton.primary[aria-pressed="true"],
+.ya-Toolbar .right .switchToDesign.selected,
+.ya-Toolbar .right .switchToBlocks.selected {
+  background: linear-gradient(135deg, #FF5376 0%, #E83D63 100%) !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 12px rgba(228, 63, 90, 0.4) !important;
+}
+
+.ya-Toolbar .material-icons {
+  font-size: 16px !important;
+  vertical-align: middle !important;
+  margin-right: 4px !important;
+}
+
+/* ==========================================================================
+   3. DESIGNER WORKBENCH: PALETTE, VIEWER, ASSETS & PROPERTIES (DARK SLATE THEME)
+   ========================================================================== */
+
+/* WorkColumns Flex Layout with Clean Column Gaps */
+.ode-WorkColumns {
+  display: flex !important;
+  flex-flow: row !important;
+  gap: 12px !important;
+  padding: 6px 12px 12px 12px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Right-side Structure & Assets column */
+.ode-Designer-RightColumns,
+.ode-WorkColumns > div:has(.ode-AssetListBox),
+.ode-WorkColumns > div:has(.AssetListBox) {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+/* Gap between Components Tree box and Media/Assets box */
+.ode-AssetListBox,
+.AssetListBox {
+  margin-top: 12px !important;
+}
+
+/* Gap and spacing for Properties Panel */
+.PropertiesBox,
+.ode-PropertiesBox,
+.ode-PropertiesPanel {
+  margin-left: 6px !important;
+}
+
+/* Main Panels & Boxes - Zero Solid Line Borders with Elevation */
+.ode-Box {
+  background: var(--pc-surface) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  overflow: hidden !important;
+}
+
+.ode-Box-content {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.ode-Box-header {
+  background: linear-gradient(90deg, #121723 0%, #1a2030 100%) !important;
+  border: none !important;
+  border-bottom: none !important;
+  padding: 8px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  height: auto !important;
+}
+
+.ode-Box-header-caption {
+  font-family: var(--pc-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  color: var(--pc-text-heading) !important;
+  text-shadow: none !important;
+}
+
+.ode-Box-body {
+  border: none !important;
+}
+
+.ode-Box-header-caption::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--pc-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--pc-primary);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.ode-Box-content,
+.ode-Box-body,
+.ode-Box-body-padding {
+  background: var(--pc-surface) !important;
+  background-image: none !important;
+  color: var(--pc-text-body) !important;
+}
+
+/* Palette Categories & Draggable Components */
+.ode-PaletteCategory,
+.ode-PaletteCategoryContent,
+.ode-PaletteCategoryContentInner {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.ode-PaletteCategoryHeader,
+.gwt-StackPanelItem div {
+  background-color: #13161F !important;
+  border: none !important;
+  border-bottom: none !important;
+  color: #94A3B8 !important;
+  font-family: var(--pc-font-heading) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  padding: 10px 14px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.ode-PaletteCategoryHeader:hover,
+.gwt-StackPanelItem:hover div {
+  background-color: #1A1E2A !important;
+  color: #F8FAFC !important;
+}
+
+/* Individual Component Items (Clean, High Visibility, Borderless) */
+.ode-SimplePaletteItem {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 8px !important;
+  margin: 2px 8px !important;
+  padding: 8px 12px !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  cursor: grab !important;
+}
+
+.ode-SimplePaletteItem img.ode-SimplePaletteItem-icon,
+.ode-SimplePaletteItem .gwt-Image.ode-SimplePaletteItem-icon {
+  filter: brightness(1.2) contrast(1.1) !important;
+  opacity: 0.85 !important;
+  transition: all 0.15s ease !important;
+}
+
+.ode-SimplePaletteItem-caption {
+  color: #E2E8F0 !important;
+  font-family: var(--pc-font-body) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.2px !important;
+}
+
+.ode-SimplePaletteItem-options {
+  margin-left: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.ode-SimplePaletteItem:hover {
+  background-color: rgba(59, 130, 246, 0.14) !important;
+  border: none !important;
+  transform: translateX(4px) !important;
+}
+
+.ode-SimplePaletteItem:hover .ode-SimplePaletteItem-caption {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+.ode-SimplePaletteItem:hover img.ode-SimplePaletteItem-icon,
+.ode-SimplePaletteItem:hover .gwt-Image.ode-SimplePaletteItem-icon {
+  opacity: 1 !important;
+  filter: brightness(1.4) drop-shadow(0 0 6px rgba(59, 130, 246, 0.6)) !important;
+}
+
+.ode-SimplePaletteItem:hover .ode-SimplePaletteItem-options {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.ode-SimplePaletteItem-Selected {
+  background-color: rgba(59, 130, 246, 0.22) !important;
+  border: none !important;
+}
+
+.ode-SimplePaletteItem-Selected .ode-SimplePaletteItem-caption {
+  color: #60A5FA !important;
+  font-weight: 600 !important;
+}
+
+/* Palette Search Box */
+.ode-PaletteSearch,
+.ode-PaletteSearch input,
+.ode-SimpleFormDesigner .ode-PaletteSearch input,
+.ode-Box-body input.gwt-TextBox {
+  background: #141720 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: #F1F5F9 !important;
+  font-family: var(--pc-font-body) !important;
+  font-size: 13px !important;
+  padding: 8px 12px !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.ode-PaletteSearch input:focus,
+.ode-Box-body input.gwt-TextBox:focus {
+  background: #1A1F2C !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Properties Panel */
+.ode-PropertiesPanel,
+.ode-PropertiesPanelOuter {
+  background-color: var(--pc-surface) !important;
+  color: var(--pc-text-body) !important;
+  border: none !important;
+}
+
+.ode-PropertiesComponentName {
+  background-color: #13161F !important;
+  color: var(--pc-text-heading) !important;
+  font-family: var(--pc-font-heading) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  padding: 10px 14px !important;
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.ode-PropertyCategoryHeader {
+  background-color: #13161F !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  color: var(--pc-text-heading) !important;
+  font-family: var(--pc-font-heading) !important;
+  padding: 8px 12px !important;
+}
+
+.ode-PropertyCategoryContentInner {
+  background-color: var(--pc-surface) !important;
+  border: none !important;
+}
+
+.ode-PropertyLabel {
+  font-family: var(--pc-font-heading) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.4px !important;
+  color: #94A3B8 !important;
+}
+
+.ode-ChoicePropertyEditor,
+.ode-PropertyEditor,
+.ode-PropertiesPanel .gwt-TextBox,
+.ode-PropertiesPanel .gwt-TextArea,
+.ode-PropertiesPanel .gwt-ListBox {
+  background: #141720 !important;
+  border: none !important;
+  border-radius: 6px !important;
+  color: #F1F5F9 !important;
+  font-family: var(--pc-font-body) !important;
+  font-size: 13px !important;
+  padding: 6px 10px !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.ode-ChoicePropertyEditor:focus,
+.ode-PropertyEditor:focus,
+.ode-PropertiesPanel .gwt-TextBox:focus,
+.ode-PropertiesPanel .gwt-TextArea:focus,
+.ode-PropertiesPanel .gwt-ListBox:focus {
+  background: #1A1F2C !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+}
+
+.ode-ChoicePropertyEditor:hover {
+  background: #1A1E29 !important;
+  color: #FFFFFF !important;
+}
+
+/* Subtle Glassmorphic Info ("i") Badges for Palette Components & Properties */
+.ode-PropertyHelpWidget,
+.ode-SimplePaletteItem-button {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Ccircle cx='8' cy='8' r='7' fill='rgba(255,255,255,0.06)' stroke='none'/%3E%3Ccircle cx='8' cy='4.5' r='1' fill='%2394A3B8'/%3E%3Cpath d='M7 7.2h1v4.3h1' stroke='%2394A3B8' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  width: 16px !important;
+  height: 16px !important;
+  vertical-align: middle !important;
+  cursor: pointer !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+  margin-left: 4px !important;
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+}
+
+/* Reveal smoothly on hover over property or component row */
+.ode-PropertyRow:hover .ode-PropertyHelpWidget,
+.ode-PropertyHeader:hover .ode-PropertyHelpWidget,
+.ode-SimplePaletteItem:hover .ode-SimplePaletteItem-button {
+  opacity: 0.8 !important;
+  pointer-events: auto !important;
+}
+
+/* Hover state on the info button itself */
+.ode-PropertyHelpWidget:hover,
+.ode-SimplePaletteItem-button:hover {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Ccircle cx='8' cy='8' r='7' fill='rgba(228,63,90,0.3)' stroke='%23e43f5a'/%3E%3Ccircle cx='8' cy='4.5' r='1' fill='%23FFFFFF'/%3E%3Cpath d='M7 7.2h1v4.3h1' stroke='%23FFFFFF' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 8px rgba(228, 63, 90, 0.6)) !important;
+  transform: scale(1.1) !important;
+}
+
+.ode-PropertyHeader {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 6px !important;
+  padding: 6px 2px 2px 2px !important;
+  width: 100% !important;
+}
+
+/* Information Modals / Help Popups (Dark Glassmorphism) */
+.ode-ComponentHelpPopup,
+.ode-PropertyHelpPopup,
+.ode-DialogBox.ode-ComponentHelpPopup,
+.ode-DialogBox.ode-PropertyHelpPopup,
+.gwt-DialogBox.ode-DialogBox {
+  background: rgba(18, 23, 35, 0.98) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(228, 63, 90, 0.15) !important;
+  max-width: 320px !important;
+  min-width: 220px !important;
+  width: auto !important;
+  z-index: 10000 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+.ode-ComponentHelpPopup .Caption,
+.ode-PropertyHelpPopup .Caption,
+.ode-ComponentHelpPopup-TitleBar,
+.gwt-DialogBox .Caption {
+  background: linear-gradient(90deg, #181e2d 0%, #1e2538 100%) !important;
+  color: #FFFFFF !important;
+  font-family: var(--pc-font-heading) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.6px !important;
+  padding: 10px 14px !important;
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.ode-ComponentHelpPopup-Body {
+  color: #CBD5E1 !important;
+  font-family: var(--pc-font-body) !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  padding: 12px 14px !important;
+  width: auto !important;
+  max-width: 300px !important;
+  word-break: break-word !important;
+}
+
+.ode-ComponentHelpPopup-Link,
+.ode-ComponentHelpPopup-Link a {
+  color: #38BDF8 !important;
+  font-family: var(--pc-font-body) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  padding: 0 14px 12px 14px !important;
+  transition: color 0.15s ease !important;
+}
+
+.ode-ComponentHelpPopup-Link a:hover {
+  color: #60A5FA !important;
+  text-decoration: underline !important;
+}
+
+/* Selection Highlight for Mock Components */
+.ode-SimpleMockComponent-selected {
+  outline: 2px solid #00F0FF !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.5) !important;
+  border-radius: 4px !important;
+}
+
+/* ==========================================================================
+   4. ULTRA-MODERN MINIMAL DEVICE VIEWER FRAME & CONTROLS
+   ========================================================================== */
+
+.ViewerBox,
+.ViewerBox .ode-Box-body,
+.ViewerBox .ode-Box-content,
+.ode-SimpleFormDesigner,
+.ode-SimpleFormDesigner > table,
+.ode-SimpleFormDesigner > div {
+  min-height: 100% !important;
+  height: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background-color: #0a0f1a !important;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(228, 63, 90, 0.08) 0%, transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 28px 28px, 28px 28px !important;
+  background-position: 0 0, 0 0, 0 0 !important;
+}
+
+.ode-SimpleFormDesigner {
+  padding: 16px !important;
+  overflow-y: auto !important;
+}
+
+/* Floating Pill Toolbar */
+.ode-SimpleFormDesignerToolbar {
+  background: rgba(18, 21, 28, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 6px 14px !important;
+  margin-bottom: 22px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6) !important;
+}
+
+.ode-SimpleFormDesignerToolbar .gwt-ListBox {
+  background: #141720 !important;
+  color: #E2E8F0 !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 5px 10px !important;
+  font-family: var(--pc-font-body) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  outline: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.ode-SimpleFormDesignerToolbar .gwt-ListBox:hover {
+  background: #1A1E29 !important;
+}
+
+.ode-SimpleFormDesignerToolbar .material-icons {
+  color: #94A3B8 !important;
+  font-size: 18px !important;
+  vertical-align: middle !important;
+}
+
+/* Sleek Minimal Smartphone Frame (pure CSS, borderless frame) */
+.ode-SimpleMockFormPhonePortrait,
+.ode-SimpleMockFormPhoneLandscape,
+.ode-SimpleMockFormPhonePortraitTablet,
+.ode-SimpleMockFormPhoneLandscapeTablet,
+.ode-SimpleMockFormPhonePortraitMonitor,
+.ode-SimpleMockFormPhoneLandscapeMonitor,
+.ode-SimpleMockFormIOSPortrait,
+.ode-SimpleMockFormIOSLandscape {
+  background: #161821 !important;
+  border: none !important;
+  border-radius: 46px !important;
+  box-shadow: 
+    0 25px 65px -10px rgba(0, 0, 0, 0.85),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.8) !important;
+  padding: 10px 8px 12px 8px !important;
+  position: relative !important;
+  box-sizing: content-box !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Tablet & Monitor Frame Customization */
+.ode-SimpleMockFormPhonePortraitTablet,
+.ode-SimpleMockFormPhoneLandscapeTablet {
+  border-radius: 28px !important;
+  border: 12px solid #222632 !important;
+  padding: 12px !important;
+}
+
+.ode-SimpleMockFormPhonePortraitMonitor,
+.ode-SimpleMockFormPhoneLandscapeMonitor {
+  border-radius: 16px !important;
+  border: 14px solid #222632 !important;
+  padding: 14px !important;
+}
+
+/* ==========================================================================
+   DEFAULT MIT APP INVENTOR MOBILE SCREEN: 100% AUTHENTIC DEFAULT RENDERING
+   All mock form elements (title bar, status bar, navigation bar, canvas,
+   and components) render exactly as default MIT App Inventor code.
+   ========================================================================== */
+
+/* Mock Component Selection Outline */
+.ode-SimpleMockComponent-selected {
+  outline: 2px solid #00F0FF !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.5) !important;
+  border-radius: 4px !important;
+}
+
+/* ==========================================================================
+   BLOCKS SELECTOR SIDEBAR & GWT TREE COMPONENT (MECHA CYBER-SPORT)
+   ========================================================================== */
+
+.gwt-Tree,
+.gwt-Tree table,
+.gwt-Tree tbody,
+.gwt-Tree tr,
+.gwt-Tree td,
+.gwt-Tree .gwt-TreeItem,
+.gwt-Tree .gwt-TreeItem span,
+.gwt-Tree .gwt-TreeItem div {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #CBD5E1 !important;
+  font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.gwt-Tree {
+  padding: 8px 6px !important;
+}
+
+/* Hide or restyle clunky +/- expander icons */
+.gwt-Tree .gwt-TreeItem table td:first-child img {
+  filter: invert(1) brightness(1.8) !important;
+  opacity: 0.5 !important;
+}
+
+.gwt-Tree .gwt-TreeItem {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #CBD5E1 !important;
+  cursor: pointer !important;
+  display: block !important;
+  margin-bottom: 2px !important;
+  border-radius: 6px !important;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Category Color Swatches / Icons - Clean rounded pills without ugly box borders */
+.gwt-Tree img,
+.ode-Icon img,
+.ode-Icon-selected img {
+  border: none !important;
+  border-radius: 4px !important;
+  vertical-align: middle !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+  margin-right: 8px !important;
+  transition: transform 0.15s ease !important;
+}
+
+.gwt-Tree .gwt-TreeItem:hover img {
+  transform: scale(1.1) !important;
+}
+
+/* Full-width clean item row with transparent baseline */
+.gwt-Tree .gwt-TreeItem span {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  color: #CBD5E1 !important;
+  font-family: 'Chakra Petch', -apple-system, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.4px !important;
+  background: transparent !important;
+  border-left: 3px solid transparent !important;
+  transition: all 0.15s ease !important;
+}
+
+/* Hover State */
+.gwt-Tree .gwt-TreeItem span:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+  border-left: 3px solid #e43f5a !important;
+}
+
+/* Selected State */
+.gwt-Tree .gwt-TreeItem-selected,
+.gwt-TreeItem-selected {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.gwt-Tree .gwt-TreeItem-selected span {
+  background: rgba(228, 63, 90, 0.16) !important;
+  color: #FFFFFF !important;
+  border-left: 3px solid #e43f5a !important;
+  box-shadow: 0 0 12px rgba(228, 63, 90, 0.22) !important;
+}
+
+.gwt-Tree-focused {
+  outline: none !important;
+}
+
+/* Built-in & Screen Root Header Nodes */
+.gwt-Tree .gwt-TreeItem > table span {
+  font-weight: 700 !important;
+  letter-spacing: 0.6px !important;
+  color: #FFFFFF !important;
+}
+
+/* Sidebar Action Buttons (Rename, Delete in Block Selector) */
+.ode-BlockSelectorBox .ode-BoxesButton,
+.ode-BlockSelectorBox .gwt-Button {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: #94A3B8 !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 6px 12px !important;
+  font-family: 'Chakra Petch', -apple-system, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.ode-BlockSelectorBox .ode-BoxesButton:hover,
+.ode-BlockSelectorBox .gwt-Button:hover {
+  background: rgba(228, 63, 90, 0.18) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 10px rgba(228, 63, 90, 0.35) !important;
+}
+
+/* Media Box / Drawer */
+.ode-AssetListBox .ode-Box-header {
+  background: #11141E !important;
+  border: none !important;
+  border-bottom: none !important;
+  color: #E2E8F0 !important;
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  padding: 10px 14px !important;
+}
+
+/* Upload File Button in Asset / Media Box */
+.ode-AssetListBox .ode-TextButton {
+  background: linear-gradient(135deg, rgba(228, 63, 90, 0.14) 0%, rgba(228, 63, 90, 0.04) 100%) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  color: #F8FAFC !important;
+  font-family: 'Chakra Petch', -apple-system, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.9px !important;
+  text-transform: uppercase !important;
+  padding: 10px 16px !important;
+  width: calc(100% - 20px) !important;
+  margin: 10px auto !important;
+  display: block !important;
+  transition: all 0.2s ease !important;
+}
+
+.ode-AssetListBox .ode-TextButton:hover {
+  background: rgba(228, 63, 90, 0.25) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 15px rgba(228, 63, 90, 0.4) !important;
+}
+
+/* ==========================================================================
+   5. BLOCKLY BLOCKS EDITOR (POLYCREST GAMING DARK CANVAS)
+   ========================================================================== */
+
+svg.blocklySvg,
+.blocklySvg {
+  background-color: #0a0f1a !important;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(228, 63, 90, 0.08) 0%, transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 28px 28px, 28px 28px !important;
+  background-position: 0 0, 0 0, 0 0 !important;
+}
+
+.blocklyMainBackground,
+rect.blocklyMainBackground {
+  fill: transparent !important;
+  fill-opacity: 0 !important;
+  opacity: 0 !important;
+}
+
+/* Polycrest Deep Obsidian Flyout & Toolbox */
+.blocklyFlyoutBackground {
+  fill: #0c101c !important;
+  fill-opacity: 0.98 !important;
+  stroke: none !important;
+}
+
+.blocklyToolboxBackground,
+.blocklyToolboxDiv,
+.blocklyTreeRoot {
+  fill: #0c101c !important;
+  background-color: #0c101c !important;
+  border: none !important;
+  border-right: none !important;
+}
+
+.blocklyTreeRow {
+  color: #94A3B8 !important;
+  padding: 6px 10px !important;
+  border-radius: 4px !important;
+  transition: all 0.15s ease !important;
+  border-left: 3px solid transparent !important;
+}
+
+.blocklyTreeRow:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #F8FAFC !important;
+  border-left: 3px solid #e43f5a !important;
+}
+
+.blocklyTreeLabel {
+  font-family: var(--pc-font-heading) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.5px !important;
+}
+
+.blocklyScrollbarHandle {
+  fill: #1E2333 !important;
+  rx: 4px;
+}
+
+.blocklyScrollbarHandle:hover {
+  fill: #e43f5a !important;
+}
+
+/* ==========================================================================
+   6. DIALOGS, MODALS & PROJECT MANAGEMENT
+   ========================================================================== */
+
+.gwt-DialogBox {
+  background: rgba(18, 23, 35, 0.98) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 25px rgba(228, 63, 90, 0.18) !important;
+  overflow: hidden !important;
+  z-index: 10000 !important;
+}
+
+.gwt-DialogBox .Caption {
+  background: linear-gradient(90deg, #121723 0%, #1a2030 100%) !important;
+  border: none !important;
+  border-bottom: none !important;
+  font-family: var(--pc-font-heading) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  padding: 12px 18px !important;
+}
+
+.gwt-DialogBox .dialogContent {
+  padding: 20px 24px !important;
+  color: var(--pc-text-body) !important;
+}
+
+.ode-noDialogDiv {
+  background: rgba(18, 23, 35, 0.98) !important;
+  backdrop-filter: blur(24px) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(228, 63, 90, 0.18) !important;
+  overflow: hidden !important;
+}
+
+.ode-noDialogDivHeader {
+  background: linear-gradient(90deg, #121723 0%, #1a2030 100%) !important;
+  border: none !important;
+  border-bottom: none !important;
+  color: #FFFFFF !important;
+  font-family: var(--pc-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  padding: 12px 18px !important;
+}
+
+.ode-noDialogExampleDiv {
+  background: var(--pc-surface-elevated) !important;
+  border: none !important;
+  border-radius: 8px !important;
+}
+
+.ode-noDialogExampleTitle {
+  color: var(--pc-text-heading) !important;
+  font-family: var(--pc-font-heading) !important;
+}
+
+.ode-noDialogExampleAbout {
+  color: var(--pc-text-muted) !important;
+}
+
+/* Projects Table */
+.ode-ProjectTable {
+  background: var(--pc-surface) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: var(--pc-text-body) !important;
+  width: 100% !important;
+}
+
+.ode-ProjectTable tr:hover {
+  background: rgba(228, 63, 90, 0.08) !important;
+}
+
+.ode-ProjectTableHeader {
+  background: var(--pc-bg-subtle) !important;
+  font-family: var(--pc-font-heading) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  color: var(--pc-text-muted) !important;
+  border: none !important;
+  border-bottom: none !important;
+}
+
+/* ==========================================================================
+   7. POLYCREST ARCADE BLOCK & INPUT STYLING (OBSIDIAN BLUE & CRIMSON #E43F5A)
+   ========================================================================== */
+
+/* Flat vector blocks (zero fuzzy blur, zero eye strain) */
+.blocklyDraggable,
+.blocklyDraggable:active,
+.blocklyDraggable *,
+.blocklySelected,
+.blocklySelected * {
+  filter: none !important;
+  -webkit-filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Crisp Vector Block Chassis & Outline - Zero white border */
+.blocklyPath {
+  stroke-width: 0 !important;
+  stroke: none !important;
+  shape-rendering: geometricPrecision !important;
+  filter: none !important;
+}
+
+/* Remove 3D dual-path bevel highlights/shadows */
+.blocklyPathLight {
+  display: none !important;
+  stroke: none !important;
+  opacity: 0 !important;
+}
+
+.blocklyPathDark {
+  display: none !important;
+  fill: none !important;
+  opacity: 0 !important;
+}
+
+/* Polycrest Crimson Active Selection Outline */
+.blocklySelected > .blocklyPath {
+  stroke: #e43f5a !important;
+  stroke-width: 2.5px !important;
+  filter: drop-shadow(0 0 8px rgba(228, 63, 90, 0.6)) !important;
+}
+
+/* High-Contrast Static Block Labels (WHEN, IF, THEN, DO, SET, TO, FOR EACH) */
+.blocklyText,
+.blocklyNonEditableText text {
+  font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 11pt !important;
+  letter-spacing: 0.3px !important;
+  text-transform: none !important;
+  fill: #FFFFFF !important;
+  text-shadow: none !important;
+}
+
+/* Polycrest Arcade Inset Input Fields, Parameter Pills, & Sockets - Zero white border */
+.blocklyFieldParameter > rect,
+.blocklyFieldProcedure > rect,
+.blocklyFieldFlydown > rect,
+.blocklyFieldFlydownField > rect,
+.blocklyFieldParameterFlydown > rect,
+.blocklyFieldTextInput > rect,
+.blocklyFieldDropdown > rect,
+.blocklyEditableText > rect,
+.geras .blocklyFieldParameter > rect,
+.geras .blocklyFieldProcedure > rect,
+.classic .blocklyFieldParameter > rect,
+.classic .blocklyFieldProcedure > rect,
+.geras.classic .blocklyFieldParameter > rect,
+.geras.classic .blocklyFieldProcedure > rect {
+  fill: #080b12 !important;
+  fill-opacity: 1.0 !important;
+  stroke: none !important;
+  stroke-width: 0 !important;
+  rx: 5px !important;
+  ry: 5px !important;
+}
+
+.blocklyFieldParameter:hover > rect,
+.blocklyFieldProcedure:hover > rect,
+.blocklyFieldFlydown:hover > rect,
+.blocklyFieldFlydownField:hover > rect,
+.blocklyFieldTextInput:hover > rect,
+.blocklyFieldDropdown:hover > rect,
+.blocklyEditableText:hover > rect,
+.geras .blocklyFieldParameter:hover > rect,
+.geras .blocklyFieldProcedure:hover > rect {
+  fill: #121826 !important;
+  stroke: #e43f5a !important;
+  stroke-width: 1px !important;
+  box-shadow: 0 0 8px rgba(228, 63, 90, 0.4) !important;
+}
+
+/* High-Contrast Eye-Friendly Field Text Readouts (Crisp Bright White in Chakra Petch) */
+.blocklyFieldParameter > text,
+.blocklyFieldProcedure > text,
+.blocklyFieldFlydown > text,
+.blocklyFieldFlydownField > text,
+.blocklyFieldParameterFlydown > text,
+.blocklyFieldTextInput > text,
+.blocklyFieldDropdown > text,
+.blocklyEditableText > text,
+.blocklyDropdownText,
+.geras .blocklyFieldParameter > text,
+.geras .blocklyFieldProcedure > text,
+.classic .blocklyFieldParameter > text,
+.classic .blocklyFieldProcedure > text,
+.geras.classic .blocklyFieldParameter > text,
+.geras.classic .blocklyFieldProcedure > text {
+  fill: #FFFFFF !important;
+  font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 11pt !important;
+  letter-spacing: 0.3px !important;
+  stroke-width: 0 !important;
+  stroke: none !important;
+  text-shadow: none !important;
+}
+
+/* Flydown Menus / Dropdowns */
+.blocklyFieldParameterFlydown,
+.blocklyFieldProcedureFlydown,
+.blocklyFieldFlydownFlydown {
+  fill: #0c101c !important;
+  fill-opacity: 0.98 !important;
+  stroke: #e43f5a !important;
+}
+
+/* Dropdown Arrow / Indicator */
+.blocklyFieldDropdown image,
+.blocklyFieldDropdown .blocklyDropdownArrow {
+  fill: #94A3B8 !important;
+  opacity: 0.85 !important;
+}
+
+/* Color swatch fields */
+.blocklyColourTable,
+.blocklyFieldColour rect {
+  stroke: none;
+  stroke-width: 0;
+  rx: 3px;
+  ry: 3px;
+}

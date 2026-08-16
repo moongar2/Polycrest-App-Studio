@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PolyCrest App Studio &amp; PCstarter - Downloads</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0B0F19;
+      --bg-card: rgba(17, 24, 39, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.85);
+      --primary: #0D99FF;
+      --accent-cyan: #00D4FF;
+      --accent-glow: rgba(0, 212, 255, 0.3);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-sub: #64748B;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-active: rgba(0, 212, 255, 0.4);
+      --radius-lg: 20px;
+      --radius-md: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(13, 153, 255, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(0, 212, 255, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.8) 0%, transparent 100%);
+      color: var(--text-main);
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1080px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(13, 153, 255, 0.25), rgba(0, 212, 255, 0.15));
+      border: 1px solid var(--border-active);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #FFFFFF, var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-sub);
+      letter-spacing: 1.5px;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 16px var(--accent-glow);
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 0;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid var(--border-active);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 800px;
+      background: linear-gradient(180deg, #FFFFFF 30%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 620px;
+      line-height: 1.6;
+    }
+
+    /* DOWNLOADS GRID */
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .download-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .download-card:hover {
+      border-color: var(--border-active);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px var(--accent-glow);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(13, 153, 255, 0.2);
+      border: 1px solid rgba(13, 153, 255, 0.4);
+      color: var(--accent-cyan);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(13, 153, 255, 0.2), rgba(0, 212, 255, 0.1));
+      border: 1px solid var(--border-active);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-cyan);
+    }
+
+    .card-icon svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
+    }
+
+    .card-title h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .card-title span {
+      font-size: 12px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .specs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    .spec-row .k {
+      color: var(--text-sub);
+    }
+
+    .spec-row .v {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .btn-download {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-download.primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+      color: #000;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .btn-download.primary:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-download.secondary {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid var(--border-active);
+      color: var(--accent-cyan);
+    }
+
+    .btn-download.secondary:hover {
+      background: rgba(51, 65, 85, 0.9);
+      color: #FFF;
+    }
+
+    .btn-icon {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-sub);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Top Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-badge">
+          <svg viewBox="0 0 48 48" style="width: 28px; height: 28px;">
+            <defs>
+              <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00D4FF" />
+                <stop offset="100%" stop-color="#0D99FF" />
+              </linearGradient>
+            </defs>
+            <polygon points="24,4 42,14 42,34 24,44 6,34 6,14" fill="none" stroke="url(#g)" stroke-width="4" />
+            <polygon points="24,12 34,18 34,30 24,36 14,30 14,18" fill="url(#g)" opacity="0.4" />
+            <circle cx="24" cy="24" r="4" fill="#00D4FF" />
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">PolyCrest App Studio</div>
+          <div class="brand-sub">OFFICIAL DOWNLOAD HUB</div>
+        </div>
+      </div>
+      <a href="https://polycrest.ac" class="nav-link">
+        <span>🌐 PolyCrest Academy</span>
+      </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-tag">⚡ HIGH-PERFORMANCE VISUAL DEV ENGINE</div>
+      <h1>Get PolyCrest Companion &amp; PCstarter</h1>
+      <p>Download the live mobile testing companion and the desktop device bridge for instant zero-config USB debugging, live Logcat streaming, and hardware-accelerated emulation.</p>
+    </section>
+
+    <!-- Downloads Grid -->
+    <div class="downloads-grid">
+      <!-- 1. PolyCrest Companion APK -->
+      <div class="download-card">
+        <span class="card-badge">Android v2.79</span>
+        <div class="card-top">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-1.33-.59-2.79-.92-4.47-.92-1.68 0-3.14.33-4.47.92L5.65 5.67c-.19-.29-.55-.38-.84-.22-.31.16-.42.54-.26.85L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
+          </div>
+          <div class="card-title">
+            <h3>PolyCrest Companion</h3>
+            <span>Android APK Package</span>
+          </div>
+        </div>
+        <p class="card-desc">Real-time live interactive testing app for Android devices. Connect wirelessly via QR code or 6-character PIN code.</p>
+        <div class="specs-list">
+          <div class="spec-row"><span class="k">Compatibility</span><span class="v">Android 5.0 - 16+</span></div>
+          <div class="spec-row"><span class="k">File Format</span><span class="v">Universal APK</span></div>
+          <div class="spec-row"><span class="k">Package</span><span class="v">edu.mit.appinventor.aicompanion3</span></div>
+        </div>
+        <a href="PolyCrestCompanion.bin" download="PolyCrestCompanion.apk" class="btn-download primary">
+          <svg class="btn-icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          Download Companion APK
+        </a>
+      </div>
+
+      <!-- 2. PCstarter for macOS (Apple Silicon M-Series) -->
+      <div class="download-card">
+        <span class="card-badge">macOS Apple Silicon</span>
+        <div class="card-top">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 3.5c.62-.75 1.04-1.8 0.92-2.85-.9.04-2 .6-2.64 1.35-.56.65-1.06 1.71-.93 2.73 1.01.08 2.03-.48 2.65-1.23z"/></svg>
+          </div>
+          <div class="card-title">
+            <h3>PCstarter (Apple Silicon)</h3>
+            <span>macOS M1/M2/M3/M4 DMG</span>
+          </div>
+        </div>
+        <p class="card-desc">High-performance device bridge, Google Play Games style emulator manager, live Logcat debugger, and USB bridge daemon.</p>
+        <div class="specs-list">
+          <div class="spec-row"><span class="k">Architecture</span><span class="v">ARM64 (Apple Silicon)</span></div>
+          <div class="spec-row"><span class="k">Daemon Port</span><span class="v">tcp:8004</span></div>
+          <div class="spec-row"><span class="k">Acceleration</span><span class="v">Vulkan / Metal GPU</span></div>
+        </div>
+        <a href="PCstarter-mac-arm64.bin" download="PCstarter-mac-arm64.dmg" class="btn-download secondary">
+          <svg class="btn-icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          Download PCstarter (ARM64 DMG)
+        </a>
+      </div>
+
+      <!-- 3. PCstarter for macOS (Intel) -->
+      <div class="download-card">
+        <span class="card-badge">macOS Intel</span>
+        <div class="card-top">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 3.5c.62-.75 1.04-1.8 0.92-2.85-.9.04-2 .6-2.64 1.35-.56.65-1.06 1.71-.93 2.73 1.01.08 2.03-.48 2.65-1.23z"/></svg>
+          </div>
+          <div class="card-title">
+            <h3>PCstarter (Intel Mac)</h3>
+            <span>macOS x64 DMG</span>
+          </div>
+        </div>
+        <p class="card-desc">Desktop companion suite for Intel-based Macs with full USB debugging, port forwarding, and emulator control.</p>
+        <div class="specs-list">
+          <div class="spec-row"><span class="k">Architecture</span><span class="v">x86_64 (Intel Core)</span></div>
+          <div class="spec-row"><span class="k">Daemon Port</span><span class="v">tcp:8004</span></div>
+          <div class="spec-row"><span class="k">Format</span><span class="v">Standard macOS DMG</span></div>
+        </div>
+        <a href="PCstarter-mac-x64.bin" download="PCstarter-mac-x64.dmg" class="btn-download secondary">
+          <svg class="btn-icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          Download PCstarter (Intel DMG)
+        </a>
+      </div>
+
+      <!-- 4. PolyCrest App Studio for Windows (64-bit) -->
+      <div class="download-card">
+        <span class="card-badge">Windows 10 / 11</span>
+        <div class="card-top">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.551H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+          </div>
+          <div class="card-title">
+            <h3>PolyCrest App Studio</h3>
+            <span>Windows x64 Setup</span>
+          </div>
+        </div>
+        <p class="card-desc">Complete desktop app with built-in PCstarter bridge, zero-crash engine, and 1-click USB debugging.</p>
+        <div class="specs-list">
+          <div class="spec-row"><span class="k">Architecture</span><span class="v">x64 (Windows 10 / 11)</span></div>
+          <div class="spec-row"><span class="k">Engine Bridge</span><span class="v">Built-in PCstarter (8004)</span></div>
+          <div class="spec-row"><span class="k">Format</span><span class="v">NSIS Setup Executable</span></div>
+        </div>
+        <a href="PolyCrest-App-Studio-Windows.bin" download="PolyCrest App Studio Setup 1.0.0.exe" class="btn-download primary">
+          <svg class="btn-icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          Download for Windows (Setup .exe)
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>PolyCrest App Studio • Next-Generation Visual Application Engine</div>
+      <div>Designed &amp; Developed for <a href="https://polycrest.ac" target="_blank">PolyCrest Academy</a> — Africa's Premier Game Development &amp; Design School</div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{
+  "name": "polycrest-app-studio",
+  "version": "1.0.0",
+  "description": "PolyCrest App Studio - Standalone Visual App & Game Development Platform",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pcstarter": "electron pcstarter/main.js",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win",
+    "dist:all": "electron-builder -mw"
+  },
+  "keywords": [
+    "polycrest",
+    "app-inventor",
+    "app-studio",
+    "visual-programming",
+    "game-dev"
+  ],
+  "author": "PolyCrest Academy",
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "ac.polycrest.appstudio",
+    "productName": "PolyCrest App Studio",
+    "copyright": "Copyright © 2026 PolyCrest Academy",
+    "directories": {
+      "output": "dist"
+    },
+    "extraResources": [
+      {
+        "from": "engine",
+        "to": "engine",
+        "filter": [
+          "**/*",
+          "!war/appstudio/*.bin",
+          "!war/appstudio/*.dmg",
+          "!war/appstudio/*.exe"
+        ]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["arm64", "x64"]
+        },
+        {
+          "target": "dir",
+          "arch": ["arm64"]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "darkModeSupport": true
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

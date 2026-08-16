@@ -1,0 +1,63 @@
+.blockly-icon-warning .blocklyIconShape {
+  cursor: default;
+  fill: #F59E0B;
+  stroke-width: 1px;
+  stroke: #B45309;
+}
+
+.blockly-icon-warning .blocklyIconSymbol {
+  fill: #18181B;
+}
+
+.blocklyIconGroup .blocklyErrorIconOutline {
+  stroke: #7F1D1D;
+  stroke-width: 1px;
+  fill: #EF4444;
+}
+
+.blocklyIconGroup .blocklyErrorIconX {
+  stroke: #ffffff;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 4;
+  fill: none;
+}
+
+.blocklybackpackFlyoutBackground {
+  fill: #18181B;
+  fill-opacity: .95;
+  stroke: #27272A;
+}
+
+.blocklybackpackImage:hover {
+  cursor: pointer;
+  filter: drop-shadow(0 0 8px rgba(232, 61, 99, 0.6));
+}
+
+.blocklyZoom:hover {
+  cursor: pointer;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
+}
+
+.blocklyText,
+.blocklyFieldParameter,
+.blocklyEditableText text {
+  font-family: sans-serif !important;
+}
+
+.dyslexic .blocklyText,
+.dyslexic .blocklyFieldParameter,
+.dyslexic .goog-menuitem .goog-menuitem-content {
+  font-family: OpenDyslexic, Helvetica, Arial, sans-serif;
+}
+
+.blocklyMultiselect:hover {
+  cursor: pointer;
+  filter: drop-shadow(0 0 8px rgba(232, 61, 99, 0.6));
+}
+
+.blocklyTrash:hover {
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.8));
+}

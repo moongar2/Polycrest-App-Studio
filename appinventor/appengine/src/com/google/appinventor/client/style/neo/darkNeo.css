@@ -1,0 +1,58 @@
+/* -*- mode: java; c-basic-offset: 2; -
+* Copyright 2023-2025 MIT, All rights reserved
+* Released under the Apache License, Version 2.0
+* http://www.apache.org/licenses/LICENSE-2.0
+*/
+
+@def logo-image                         url('static/images/codi-logo-dark.svg');
+@def background-image                   url('static/images/squairy_dark.jpg');
+
+/* PolyCrest Primary & Accents */
+@def selected-color                     #E83D63;
+@def tab-bar-background-color           #18181b;
+@def bar-color                          #E83D63;
+
+/* PolyCrest Dark Zinc Grayscale */
+@def v-white                            #09090b;
+@def v-white-shadow                     rgba(9, 9, 11, 0.5);
+@def v-black                            #ffffff;
+@def v-black-shadow                     rgba(255, 255, 255, 0.05);
+@def container-shadow                   rgba(0, 0, 0, 0.6);
+@def button-shadow-color                rgba(232, 61, 99, 0.35);
+@def gray-200                           #18181b;
+@def gray-300                           #27272a;
+@def gray-400                           #71717a;
+@def gray-450                           #a1a1aa;
+@def gray-500                           #a1a1aa;
+@def gray-550                           #d4d4d8;
+@def gray-700                           #f4f4f5;
+@def gray-800                           #ffffff;
+@def gray-900                           #ffffff;
+
+@def blockly-indicator                  #E83D63;
+
+/* Colors */
+/* cyber blue */
+@def explorer-border                    #27272a;
+@def simple-panel-border                #E83D63;
+@def simple-panel-shadow                rgba(232, 61, 99, 0.4);
+@def project-color                      #38BDF8;
+
+@def phoneLandscape                      url('static/images/dark_mode_mockups/dark-mode-phoneLandscapeModern.png');
+@def phonePortrait                       url('static/images/dark_mode_mockups/dark-mode-phonePortraitModern.png');
+@def phoneLandscapeTablet                url('static/images/dark_mode_mockups/dark-mode-phoneLandscapeTablet.png');
+@def phonePortraitTablet                 url('static/images/dark_mode_mockups/dark-mode-phonePortraitTablet.png');
+@def phoneLandscapeMonitor               url('static/images/dark_mode_mockups/dark-mode-phoneLandscapeMonitor.png');
+@def phonePortraitMonitor                url('static/images/dark_mode_mockups/dark-mode-phonePortraitMonitor.png');
+
+@def navigationbarPortrait               url('static/images/navigationbarPortrait.png');
+@def navigationbarLandscape              url('static/images/navigationbarLandscape.png');
+
+@def clr-primary-75                      #FF5376;
+@def clr-primary                         #E83D63;
+
+@def error                               #EF4444;
+@def v-red                               #E83D63;
+
+@def row-highlight                       rgba(232, 61, 99, 0.15);
+@def text-highlight                      rgba(232, 61, 99, 1);

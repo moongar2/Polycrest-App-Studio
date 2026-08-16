@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PCstarter - PolyCrest Device Bridge & Emulation Station</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="brand-section">
+        <div class="logo-orb">
+          <svg viewBox="0 0 48 48" class="brand-svg">
+            <defs>
+              <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00D4FF" />
+                <stop offset="100%" stop-color="#0D99FF" />
+              </linearGradient>
+            </defs>
+            <polygon points="24,4 42,14 42,34 24,44 6,34 6,14" fill="none" stroke="url(#brandGrad)" stroke-width="3.5" />
+            <polygon points="24,12 34,18 34,30 24,36 14,30 14,18" fill="url(#brandGrad)" opacity="0.3" />
+            <circle cx="24" cy="24" r="4" fill="#00D4FF" />
+          </svg>
+        </div>
+        <div class="brand-title">
+          <span class="brand-name">PCSTARTER</span>
+          <span class="brand-sub">POLYCREST EMULATION &amp; DEBUG ENGINE</span>
+        </div>
+      </div>
+
+      <div class="header-status">
+        <div class="status-pill active" id="serverStatusPill">
+          <span class="status-dot pulsing"></span>
+          <span class="status-label">PORT 8004 ACTIVE</span>
+        </div>
+        <div class="status-pill" id="adbStatusPill">
+          <span class="status-dot cyan"></span>
+          <span class="status-label" id="deviceCountLabel">1 DEVICE CONNECTED</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="action-btn" id="btnRestartAdb" title="Restart ADB Server">
+          <svg class="btn-icon" viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+          Restart ADB
+        </button>
+        <button class="action-btn primary" id="btnRefreshAll" title="Refresh Devices &amp; Services">
+          <svg class="btn-icon" viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46A7.93 7.93 0 0020 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74A7.93 7.93 0 004 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+          Sync
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="main-body">
+      <!-- Navigation Sidebar -->
+      <nav class="side-nav">
+        <button class="nav-item active" data-tab="tab-bridge">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M15 7v4h1v2h-3V5h2l-3-4-3 4h2v8H8v-2h1V7H7v4H6v2h1v8h2v-8h1v-2H9v-2h2V5H9l3-4 3 4h-2v6h2v-2h-1V7h3zm-5 8H8v4h2v-4zm6 0h-2v4h2v-4z"/></svg>
+          <span>Device Bridge</span>
+        </button>
+        <button class="nav-item" data-tab="tab-emulation">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          <span>Emulation Station</span>
+        </button>
+        <button class="nav-item" data-tab="tab-debugger">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
+          <span>Live Logcat</span>
+        </button>
+        <button class="nav-item" data-tab="tab-mirror">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+          <span>Screen Mirror</span>
+        </button>
+        <button class="nav-item" data-tab="tab-tools">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+          <span>ADB Tools</span>
+        </button>
+      </nav>
+
+      <!-- Content Views -->
+      <main class="content-area">
+        <!-- TAB 1: Device Bridge -->
+        <section class="tab-pane active" id="tab-bridge">
+          <div class="hero-banner">
+            <div class="hero-text">
+              <h2>PolyCrest Device Bridge</h2>
+              <p>Instant zero-config USB debugging and live testing bridge for PolyCrest App Studio.</p>
+            </div>
+            <div class="hero-badge">
+              <span class="badge-title">Bridge Port</span>
+              <span class="badge-value">tcp:8004</span>
+            </div>
+          </div>
+
+          <div class="section-title">
+            <h3>Connected Devices</h3>
+            <span class="badge-pill" id="liveDeviceBadge">1 Active</span>
+          </div>
+
+          <div class="devices-grid" id="devicesList">
+            <!-- Dynamically populated -->
+            <div class="device-card skeleton">
+              <div class="device-header">
+                <div class="device-avatar"></div>
+                <div class="device-info">
+                  <div class="shimmer-line title"></div>
+                  <div class="shimmer-line sub"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Connect & Forwarding Hub -->
+          <div class="bridge-controls-card">
+            <h3>Quick Bridge Controls</h3>
+            <div class="controls-row">
+              <button class="g-btn primary" id="btnLaunchCompanion">
+                <svg class="btn-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                Launch Companion on Device
+              </button>
+              <button class="g-btn secondary" id="btnForwardPorts">
+                <svg class="btn-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9V7h2v5z"/></svg>
+                Forward Port (8001 -> 8001)
+              </button>
+              <button class="g-btn outline" id="btnPushCompanionApk">
+                <svg class="btn-icon" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+                Push Latest Companion APK
+              </button>
+            </div>
+            <div class="toast-area" id="bridgeToast"></div>
+          </div>
+        </section>
+
+        <!-- TAB 2: Emulation Station -->
+        <section class="tab-pane" id="tab-emulation">
+          <div class="hero-banner emulator-banner">
+            <div class="hero-text">
+              <h2>Android Emulation Station</h2>
+              <p>Hardware accelerated virtual devices tailored for high-speed responsive visual development.</p>
+            </div>
+            <button class="g-btn primary" id="btnStartAvd">
+              <svg class="btn-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              Boot Default Emulator
+            </button>
+          </div>
+
+          <div class="emulation-grid">
+            <div class="card avd-selector-card">
+              <h3>Available Virtual Devices (AVD)</h3>
+              <div class="avd-list" id="avdList">
+                <div class="avd-item-empty">Scanning for Android AVDs...</div>
+              </div>
+            </div>
+
+            <div class="card preset-card">
+              <h3>2026 Target Resolution Presets</h3>
+              <div class="presets-list">
+                <div class="preset-item" data-res="1440x3120">
+                  <div class="preset-name">Samsung Galaxy S26 Ultra</div>
+                  <div class="preset-spec">1440 x 3120 • 19.5:9 • 120Hz</div>
+                </div>
+                <div class="preset-item" data-res="1344x2992">
+                  <div class="preset-name">Google Pixel 10 Pro</div>
+                  <div class="preset-spec">1344 x 2992 • 20:9 • OLED</div>
+                </div>
+                <div class="preset-item" data-res="2156x2344">
+                  <div class="preset-name">Galaxy Z Fold 7 (Expanded)</div>
+                  <div class="preset-spec">2156 x 2344 • 7.6" Dynamic AMOLED</div>
+                </div>
+                <div class="preset-item" data-res="1080x2400">
+                  <div class="preset-name">Standard 2026 Android Phone</div>
+                  <div class="preset-spec">1080 x 2400 • FHD+ Modern Ratio</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 3: Live Logcat -->
+        <section class="tab-pane" id="tab-debugger">
+          <div class="logcat-header">
+            <div class="logcat-filters">
+              <input type="text" id="logcatSearch" placeholder="Filter logs (e.g., PolyCrest, Exception, Error)..." class="g-input">
+              <select id="logcatTagSelect" class="g-select">
+                <option value="">All Tags</option>
+                <option value="PolyCrest">PolyCrest</option>
+                <option value="ActivityManager">ActivityManager</option>
+                <option value="AndroidRuntime">AndroidRuntime</option>
+                <option value="System.out">System.out</option>
+              </select>
+              <button class="g-btn small secondary" id="btnClearLogs">Clear</button>
+              <button class="g-btn small" id="btnToggleAutoScroll">Auto-scroll: ON</button>
+            </div>
+            <div class="logcat-actions">
+              <button class="g-btn small outline" id="btnExportLogs">Export Logs</button>
+            </div>
+          </div>
+          <div class="logcat-terminal" id="logcatConsole">
+            <div class="terminal-line info">[PCstarter] Ready. Streaming realtime logcat events from connected device...</div>
+          </div>
+        </section>
+
+        <!-- TAB 4: Screen Mirror -->
+        <section class="tab-pane" id="tab-mirror">
+          <div class="mirror-container">
+            <div class="mirror-controls">
+              <button class="g-btn primary" id="btnCaptureScreen">
+                <svg class="btn-icon" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                Refresh Screen
+              </button>
+              <label class="auto-refresh-toggle">
+                <input type="checkbox" id="chkAutoMirror" checked>
+                <span>Live Refresh (1s)</span>
+              </label>
+              <span class="device-model-label" id="mirrorModelLabel">Pixel / Galaxy</span>
+            </div>
+            <div class="device-frame">
+              <div class="phone-bezel">
+                <img id="mirrorImage" alt="Live Device Screen" src="" />
+                <div class="mirror-placeholder" id="mirrorPlaceholder">
+                  <div class="spinner"></div>
+                  <span>Awaiting Device Frame...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 5: ADB Tools -->
+        <section class="tab-pane" id="tab-tools">
+          <div class="tools-grid">
+            <div class="card">
+              <h3>Wireless ADB Connection</h3>
+              <p>Connect to an Android device over your local Wi-Fi without any cables.</p>
+              <div class="form-row">
+                <input type="text" id="wifiIpInput" placeholder="192.168.100.142:5555" class="g-input">
+                <button class="g-btn primary" id="btnConnectWifi">Connect</button>
+              </div>
+              <div class="tool-result" id="wifiResult"></div>
+            </div>
+
+            <div class="card">
+              <h3>Custom Port Forwarding</h3>
+              <p>Forward local development ports directly to the device network.</p>
+              <div class="form-row">
+                <input type="text" id="localPortInput" placeholder="8001" value="8001" class="g-input small">
+                <span class="arrow-sep">&rarr;</span>
+                <input type="text" id="remotePortInput" placeholder="8001" value="8001" class="g-input small">
+                <button class="g-btn secondary" id="btnCustomForward">Apply</button>
+              </div>
+              <div class="tool-result" id="forwardResult"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
